@@ -390,6 +390,7 @@ name: GetFunctionPointer
 details:
     - "The function pointer is unique for the device on which the module was created."
     - "The function pointer is no longer valid if module is destroyed."
+    - "The function name should only refer to callable functions within the module."
     - "The application may call this function from simultaneous threads."
     - "The implementation of this function should be lock-free."
 params:
