@@ -31,7 +31,7 @@ etors:
       desc: Fabric vertex type is unknown
     - name: DEVICE
       desc: Fabric vertex represents a device
-    - name: SUBEVICE
+    - name: SUBDEVICE
       desc: Fabric vertex represents a subdevice
     - name: SWITCH
       desc: Fabric vertex represents a switch
