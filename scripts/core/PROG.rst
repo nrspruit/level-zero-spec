@@ -1169,12 +1169,12 @@ The following pseudo-code demonstrates a sequence for submission of a brute-forc
 
 .. parsed-literal::
 
-       ${x}CommandListAppendLaunchKernel(hCommandList, hKernel, &launchArgs, nullptr, 0, nullptr);
+       ${x}CommandListAppendLaunchKernel(hCommandList, hKernel1, &launchArgs, nullptr, 0, nullptr);
 
        // Append a barrier into a command list to ensure hKernel1 completes before hKernel2 begins
        ${x}CommandListAppendBarrier(hCommandList, nullptr, 0, nullptr);
 
-       ${x}CommandListAppendLaunchKernel(hCommandList, hKernel, &launchArgs, nullptr, 0, nullptr);
+       ${x}CommandListAppendLaunchKernel(hCommandList, hKernel2, &launchArgs, nullptr, 0, nullptr);
        ...
 
 Execution Barriers
