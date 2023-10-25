@@ -198,7 +198,7 @@ etors:
       version: "1.5"
     - name: FABRIC_PORT_ERROR_COUNTERS
       desc: $s_fabric_port_error_counters_t
-      version: "1.5"
+      version: "1.7"      
 --- #-------------------------------------------------------------------------
 type: struct
 desc: "Base for all properties types"
