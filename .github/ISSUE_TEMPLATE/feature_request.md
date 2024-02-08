@@ -2,7 +2,7 @@
 name: Feature request
 about: Suggest an idea for this project
 title: ''
-labels: New Issue
+labels: FR-New Request
 assignees: ''
 
 ---
@@ -15,3 +15,6 @@ Please provide a clear and concise description of the problem prompting this fea
 
 **Additional Information**
 Please provide any other relevant information regarding this feature request.
+
+**Proposal**
+_link to the full proposal here_
