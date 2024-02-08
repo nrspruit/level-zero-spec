@@ -103,6 +103,12 @@ class: $sOverclock
 name: "$s_overclock_handle_t"
 version: "1.5"
 --- #--------------------------------------------------------------------------
+type: handle
+desc: "Handle for a Sysman virtual function management domain"
+class: $sVFManagement
+name: "$s_vf_handle_t"
+version: "1.9"
+--- #--------------------------------------------------------------------------
 type: enum
 desc: "Defines structure types"
 name: $s_structure_type_t
@@ -215,14 +221,30 @@ etors:
       value: "0x00020001"
       desc: $s_power_domain_exp_properties_t
       version: "1.8"
-    - name: MEM_TIMESTAMP_BITS_EXP
+    - name: MEM_BANDWIDTH_COUNTER_BITS_EXP_PROPERTIES
       value: "0x00020002"
-      desc: $s_mem_timestamp_bits_exp_t
+      desc: $s_mem_bandwidth_counter_bits_exp_properties_t
       version: "1.8"
     - name: MEMORY_PAGE_OFFLINE_STATE_EXP
       value: "0x00020003"
       desc: $s_mem_page_offline_state_exp_t
       version: "1.8"
+    - name: SUB_DEVICE_EXP_PROPERTIES 
+      value: "0x00020004"
+      desc: $s_subdevice_exp_properties_t
+      version: "1.9"
+    - name: VF_EXP_PROPERTIES
+      value: "0x00020005"
+      desc: $s_vf_exp_properties_t
+      version: "1.9"
+    - name: VF_UTIL_MEM_EXP
+      value: "0x00020006"
+      desc: $s_vf_util_mem_exp_t
+      version: "1.9"
+    - name: VF_UTIL_ENGINE_EXP
+      value: "0x00020007"
+      desc: $s_vf_util_engine_exp_t
+      version: "1.9"
 --- #-------------------------------------------------------------------------
 type: struct
 desc: "Base for all properties types"
