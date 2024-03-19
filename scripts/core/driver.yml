@@ -70,6 +70,62 @@ params:
             if count is less than the number of drivers available, then the loader shall only retrieve that number of drivers.
 --- #--------------------------------------------------------------------------
 type: enum
+desc: "Supported driver initialization type flags"
+class: $x
+name: $x_init_driver_type_flags_t
+details:
+    - "Bit Field which details the driver types to be initialized and returned to the user."
+    - "Value Definition:"
+    - "0	Default, All Drivers of any type retrieved."
+    - "ZE_INIT_DRIVER_TYPE_FLAG_GPU,	GPU Drivers are Init."
+    - "ZE_INIT_DRIVER_TYPE_FLAG_NPU,	NPU Drivers are Init."
+    - "ZE_INIT_DRIVER_TYPE_FLAG_GPU | ZE_INIT_DRIVER_TYPE_FLAG_NPU, NPU & GPU Drivers are Init."
+    - "UINT32_MAX	All Drivers of any type are retrieved."
+etors:
+    - name: GPU
+      desc: "initialize GPU drivers"
+    - name: NPU
+      desc: "initialize NPU drivers"
+--- #--------------------------------------------------------------------------
+type: function
+desc: "Initialize the $OneApi driver(s) based on the driver types requested."
+class: $x
+name: InitDrivers
+decl: static
+ordinal: "0"
+details:
+    - "The application must call this function or zeInit before calling any other function."
+    - "The application can call InitDrivers or zeInit to init the drivers on the system."
+    - "If this function or zeInit is not called, then all other functions will return $X_RESULT_ERROR_UNINITIALIZED."
+    - "Only one instance of each driver will be initialized per process."
+    - "A driver represents a collection of physical devices."
+    - "Multiple calls to this function will return identical driver handles, in the same order."
+    - "The drivers returned to the caller will be based on the init types which state the drivers to be included."
+    - "The application may pass nullptr for pDrivers when only querying the number of drivers."
+    - "The application may call this function multiple times with different flags or environment variables enabled."
+    - "The application must call this function after forking new processes. Each forked process must call this function."
+    - "The application may call this function from simultaneous threads."
+    - "The implementation of this function must be thread-safe for scenarios where multiple libraries may initialize the driver(s) simultaneously."
+params:
+    - type: "uint32_t*"
+      name: pCount
+      desc: |
+            [in,out] pointer to the number of driver instances.
+            if count is zero, then the loader shall update the value with the total number of drivers available.
+            if count is greater than the number of drivers available, then the loader shall update the value with the correct number of drivers available.
+    - type: "$x_driver_handle_t*"
+      name: phDrivers
+      desc: |
+            [in,out][optional][range(0, *pCount)] array of driver instance handles.
+            if count is less than the number of drivers available, then the loader shall only retrieve that number of drivers.
+    - type: $x_init_driver_type_flags_t
+      name: flags
+      desc: |
+            [in] initialization driver type flags.
+            must be 0 (default) or a combination of $x_init_driver_type_flag_t.
+      init: "0"
+--- #--------------------------------------------------------------------------
+type: enum
 desc: "Supported API versions"
 class: $xDriver
 name: $x_api_version_t
